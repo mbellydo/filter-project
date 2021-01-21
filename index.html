@@ -21,11 +21,9 @@
   <!-- header -->
   <header>
     <!-- navbar  -->
-    <!-- 
-https://www.iconfinder.com/icons/2427887/dessert_donut_doughnut_fat_sweets_icon
-Creative Commons (Attribution 3.0 Unported);
-https://www.iconfinder.com/korawan_m
-     -->
+    <!-- https://www.iconfinder.com/icons/2427887/dessert_donut_doughnut_fat_sweets_icon
+        Creative Commons (Attribution 3.0 Unported);
+        https://www.iconfinder.com/korawan_m -->
     <nav class="navbar navbar-expand-lg px-4">
       <a class="navbar-brand" href="#"><img src="img/logo.svg" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
@@ -111,10 +109,6 @@ https://www.iconfinder.com/korawan_m
         </div>
       </div>
     </div>
-
-
-
-
     <!--end of  banner  -->
   </header>
   <!-- header -->
@@ -139,9 +133,7 @@ https://www.iconfinder.com/korawan_m
       </div>
     </div>
   </section>
-
   <!-- end of about us -->
-
 
   <!-- store -->
   <section id="store" class="store py-5">
@@ -156,11 +148,11 @@ https://www.iconfinder.com/korawan_m
       <!--filter buttons -->
       <div class="row">
         <div class=" col-lg-8 mx-auto d-flex justify-content-around my-2 sortBtn flex-wrap">
-          <a href="#" class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="all"> all</a>
-          <a href="#" class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="cakes">cakes</a>
-          <a href="#" class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="cupcakes">cupcakes</a>
-          <a href="#" class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="sweets">sweets</a>
-          <a href="#" class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="doughnuts">doughnuts</a>
+          <a class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="all" @click="aplicarFiltro('')"> all</a>
+          <a class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="cakes" @click="aplicarFiltro('cakes')">cakes</a>
+          <a class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="cupcakes" @click="aplicarFiltro('cupcakes')">cupcakes</a>
+          <a class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="sweets" @click="aplicarFiltro('sweets')">sweets</a>
+          <a class="btn btn-outline-secondary btn-black text-uppercase filter-btn m-2" data-filter="doughnuts" @click="aplicarFiltro('dougnuts')">doughnuts</a>
         </div>
       </div>
       <!-- search box -->
@@ -179,10 +171,11 @@ https://www.iconfinder.com/korawan_m
         </div>
       </div>
       <!--end of filter buttons -->
+
       <!-- store  items-->
       <div class="row" id="store-items">
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
+        <div v-show="showItem('sweets')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
           <div class="card ">
             <div class="img-container">
               <img src="img/sweets-1.jpeg" class="card-img-top store-img" alt="">
@@ -204,7 +197,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
+        <div v-show="showItem('cupcakes')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
           <div class="card ">
             <div class="img-container">
               <img src="img/cupcake-1.jpeg" class="card-img-top store-img" alt="">
@@ -226,7 +219,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
+        <div v-show="showItem('cakes')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
           <div class="card ">
             <div class="img-container">
               <img src="img/cake-1.jpeg" class="card-img-top store-img" alt="">
@@ -248,7 +241,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
+        <div v-show="showItem('dougnuts')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
           <div class="card ">
             <div class="img-container">
               <img src="img/doughnut-1.jpeg" class="card-img-top store-img" alt="">
@@ -270,7 +263,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
+        <div v-show="showItem('sweets')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
           <div class="card ">
             <div class="img-container">
               <img src="img/sweets-2.jpeg" class="card-img-top store-img" alt="">
@@ -292,7 +285,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
+        <div v-show="showItem('cupcakes')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
           <div class="card ">
             <div class="img-container">
               <img src="img/cupcake-2.jpeg" class="card-img-top store-img" alt="">
@@ -314,7 +307,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
+        <div v-show="showItem('cakes')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
           <div class="card ">
             <div class="img-container">
               <img src="img/cake-2.jpeg" class="card-img-top store-img" alt="">
@@ -336,7 +329,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
+        <div v-show="showItem('dougnuts')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
           <div class="card ">
             <div class="img-container">
               <img src="img/doughnut-2.jpeg" class="card-img-top store-img" alt="">
@@ -358,7 +351,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
+        <div v-show="showItem('sweets')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item sweets" data-item="sweets">
           <div class="card ">
             <div class="img-container">
               <img src="img/sweets-3.jpeg" class="card-img-top store-img" alt="">
@@ -380,7 +373,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
+        <div v-show="showItem('cupcakes')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cupcakes" data-item="cupcakes">
           <div class="card ">
             <div class="img-container">
               <img src="img/cupcake-3.jpeg" class="card-img-top store-img" alt="">
@@ -402,7 +395,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
+        <div v-show="showItem('cakes')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item cakes" data-item="cakes">
           <div class="card ">
             <div class="img-container">
               <img src="img/cake-3.jpeg" class="card-img-top store-img" alt="">
@@ -424,7 +417,7 @@ https://www.iconfinder.com/korawan_m
         </div>
         <!--end of single store item-->
         <!-- single item -->
-        <div class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
+        <div v-show="showItem('dougnuts')" class="col-10 col-sm-6 col-lg-4 mx-auto my-3 store-item doughnuts" data-item="dougnuts">
           <div class="card ">
             <div class="img-container">
               <img src="img/doughnut-3.jpeg" class="card-img-top store-img" alt="">
@@ -451,11 +444,10 @@ https://www.iconfinder.com/korawan_m
   <!--end of store items -->
 
 
-
-  <!-- jquery -->
-  <script src="js/jquery-3.3.1.min.js"></script>
   <!-- bootstrap js -->
-  <script src="js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <!-- vue js -->
+  <script src="https://unpkg.com/vue@next"></script>
   <!-- script js -->
   <script src="js/app.js"></script>
 </body>
